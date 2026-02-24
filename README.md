@@ -1,6 +1,12 @@
 # pdf
 
-A PDF toolkit CLI (scaffold).
+A small PDF toolkit CLI.
+
+Currently implemented:
+- `merge` (pdf-lib)
+- `rotate` (pdf-lib)
+
+Other commands exist but are stubs.
 
 ## Install
 
@@ -11,37 +17,37 @@ npm install
 For local dev usage:
 
 ```bash
-npm link
-pdf --help
+npm install
+npm run cli -- --help
 ```
 
 ## Usage
 
 ```bash
-pdf --help
-pdf --version
+# help/version
+npm run cli -- --help
+npm run cli -- --version
 
-pdf merge a.pdf b.pdf -o merged.pdf
-pdf split input.pdf --pages "1-3,7" --outdir out/
-pdf compress input.pdf -o output.pdf --quality medium
-pdf rotate input.pdf -o rotated.pdf --degrees 90 --pages "1-"
-pdf extract-text input.pdf -o output.txt
+# merge: merge <out.pdf> <in1.pdf...>
+node ./bin/pdfkit.js merge merged.pdf a.pdf b.pdf c.pdf
+
+# rotate: rotate <in.pdf> <out.pdf> --degrees 90|180|270 [--pages 1,3-5]
+node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 90
+node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 270 --pages "1,3-5"
 ```
 
 ## Commands
 
-- `merge` — merge PDFs
-- `split` — split pages/ranges
-- `compress` — optimize/compress
-- `rotate` — rotate pages
-- `extract-text` — extract text
-
-> Note: commands are currently stubs and will print “not implemented yet”.
+- `merge <out.pdf> <in1.pdf...>` — merge PDFs
+- `rotate <in.pdf> <out.pdf> --degrees <90|180|270> [--pages <spec>]` — rotate pages
+- `split` — stub
+- `compress` — stub
+- `extract-text` — stub
 
 ## Dev
 
 ```bash
 npm install
 npm run lint
-npm run format
+npm test
 ```
