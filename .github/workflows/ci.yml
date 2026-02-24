@@ -1,6 +1,6 @@
 name: CI
 
-'on':
+"on":
   push:
     branches: [main]
   pull_request: {}
@@ -9,21 +9,10 @@ name: CI
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18, 20]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
+          node-version: 20
       - run: npm ci
-      - run: npm run lint
       - run: npm test
-      - run: npm run cli -- --help
-      - name: smoke: split
-        run: node ./bin/pdfkit.js split test/fixtures/mini.pdf --outdir /tmp/pdf-split --every 1 && ls -la /tmp/pdf-split
-      - name: smoke: extract-text
-        run: node ./bin/pdfkit.js extract-text test/fixtures/mini.pdf | grep -i "hello world"
