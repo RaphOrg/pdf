@@ -1,12 +1,6 @@
 # pdf
 
-A small PDF toolkit CLI.
-
-Currently implemented:
-- `merge` (pdf-lib)
-- `rotate` (pdf-lib)
-
-Other commands exist but are stubs.
+A pragmatic PDF toolkit CLI.
 
 ## Install
 
@@ -17,32 +11,36 @@ npm install
 For local dev usage:
 
 ```bash
-npm install
-npm run cli -- --help
+npm link
+pdf --help
 ```
 
 ## Usage
 
 ```bash
-# help/version
-npm run cli -- --help
-npm run cli -- --version
+pdf --help
+pdf --version
 
-# merge: merge <out.pdf> <in1.pdf...>
-node ./bin/pdfkit.js merge merged.pdf a.pdf b.pdf c.pdf
+# merge
+pdf merge a.pdf b.pdf -o merged.pdf
 
-# rotate: rotate <in.pdf> <out.pdf> --degrees 90|180|270 [--pages 1,3-5]
-node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 90
-node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 270 --pages "1,3-5"
+# split: split into chunks of N pages (default N=1)
+pdf split input.pdf --outdir out/
+pdf split input.pdf --outdir out/ --every 2
+# writes: out/page-001.pdf, out/page-002.pdf, ...
+
+# extract text
+pdf extract-text input.pdf
+pdf extract-text input.pdf --out output.txt
 ```
 
 ## Commands
 
-- `merge <out.pdf> <in1.pdf...>` — merge PDFs
-- `rotate <in.pdf> <out.pdf> --degrees <90|180|270> [--pages <spec>]` — rotate pages
-- `split` — stub
-- `compress` — stub
-- `extract-text` — stub
+- `merge` — merge PDFs
+- `split` — split into per-page (or N-page) PDFs
+- `compress` — optimize/compress (stub)
+- `rotate` — rotate pages (stub)
+- `extract-text` — extract text
 
 ## Dev
 
@@ -50,4 +48,18 @@ node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 270 --pages "1,3-5"
 npm install
 npm run lint
 npm test
+```
+
+## Split
+
+```bash
+node ./bin/pdfkit.js split input.pdf --outdir out/
+node ./bin/pdfkit.js split input.pdf --outdir out/ --every 2
+```
+
+## Extract text
+
+```bash
+node ./bin/pdfkit.js extract-text input.pdf
+node ./bin/pdfkit.js extract-text input.pdf --out output.txt
 ```
