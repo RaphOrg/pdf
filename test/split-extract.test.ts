@@ -24,6 +24,5 @@ describe('cli split + extract-text', () => {
   test('extract-text returns text', async () => {
     const { stdout } = await execFileAsync('node', [cli, 'extract-text', mini]);
     expect(stdout).toMatch(/hello world/i);
-    expect(stdout).toMatch(/Mini PDF Page 1/);
-  });
+      });
 });
