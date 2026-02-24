@@ -2,6 +2,7 @@ name: CI
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -22,3 +23,7 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run cli -- --help
+      - name: smoke: split
+        run: node ./bin/pdfkit.js split test/fixtures/mini.pdf --outdir /tmp/pdf-split --every 1 && ls -la /tmp/pdf-split
+      - name: smoke: extract-text
+        run: node ./bin/pdfkit.js extract-text test/fixtures/mini.pdf | grep -i "hello world"
