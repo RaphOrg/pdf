@@ -1,4 +1,24 @@
+<<<<<<< HEAD
 node_modules
 .DS_Store
 .env
 *.log
+=======
+# node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# build
+/dist
+/coverage
+
+# env
+.env
+.env.*
+
+# misc
+.DS_Store
+>>>>>>> c1de6e3 (chore: add CI/tooling scaffold + tech decisions)

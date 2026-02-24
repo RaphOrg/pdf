@@ -1,15 +1,15 @@
 export default [
   {
-    ignores: ['node_modules/**', 'dist/**'],
+    ignores: ["node_modules/**", "dist/**", "coverage/**"],
   },
   {
-    files: ['**/*.js'],
+    files: ["**/*.js"],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      ecmaVersion: "latest",
+      sourceType: "module",
     },
     rules: {
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    },
-  },
+      "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+    }
+  }
 ];

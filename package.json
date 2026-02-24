@@ -10,7 +10,8 @@
     "start": "node ./bin/pdfkit.js --help",
     "lint": "eslint .",
     "format": "prettier -w .",
-    "test": "node -e \"console.log('no tests yet')\""
+    "test": "node -e \"console.log('no tests yet')\"",
+    "cli": "node --enable-source-maps ./bin/pdfkit.js --help"
   },
   "engines": {
     "node": ">=18"
