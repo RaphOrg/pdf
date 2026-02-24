@@ -17,22 +17,23 @@ npm install
 For local dev usage:
 
 ```bash
-npm link
-pdf --help
+npm install
+npm run cli -- --help
 ```
 
 ## Usage
 
 ```bash
-pdf --help
-pdf --version
+# help/version
+npm run cli -- --help
+npm run cli -- --version
 
-# merge: pdf merge <out.pdf> <in1.pdf...>
-pdf merge merged.pdf a.pdf b.pdf c.pdf
+# merge: merge <out.pdf> <in1.pdf...>
+node ./bin/pdfkit.js merge merged.pdf a.pdf b.pdf c.pdf
 
-# rotate: pdf rotate <in.pdf> <out.pdf> --degrees 90|180|270 [--pages 1,3-5]
-pdf rotate input.pdf rotated.pdf --degrees 90
-pdf rotate input.pdf rotated.pdf --degrees 270 --pages "1,3-5"
+# rotate: rotate <in.pdf> <out.pdf> --degrees 90|180|270 [--pages 1,3-5]
+node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 90
+node ./bin/pdfkit.js rotate input.pdf rotated.pdf --degrees 270 --pages "1,3-5"
 ```
 
 ## Commands
