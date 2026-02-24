@@ -1,20 +1,10 @@
 import fs from 'node:fs/promises';
 import { Command } from 'commander';
+import pdfParse from 'pdf-parse';
 
 async function extractText(bytes) {
-  const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const loadingTask = pdfjs.getDocument({ data: new Uint8Array(bytes) });
-  const doc = await loadingTask.promise;
-
-  let out = '';
-  for (let p = 1; p <= doc.numPages; p++) {
-    const page = await doc.getPage(p);
-    const content = await page.getTextContent();
-    const line = content.items.map((it) => (it.str ?? '')).join(' ');
-    out += line + '\n';
-  }
-
-  return out;
+  const res = await pdfParse(Buffer.from(bytes));
+  return res.text ?? '';
 }
 
 export function extractTextCommand() {
