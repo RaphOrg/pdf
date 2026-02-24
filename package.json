@@ -1,0 +1,30 @@
+{
+  "name": "pdf",
+  "version": "0.1.0",
+  "description": "PDF toolkit CLI (scaffold)",
+  "type": "module",
+  "bin": {
+    "pdf": "./bin/pdfkit.js"
+  },
+  "scripts": {
+    "start": "node ./bin/pdfkit.js --help",
+    "lint": "eslint .",
+    "format": "prettier -w .",
+    "test": "node -e \"console.log('no tests yet')\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "pdf",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.20.1",
+    "prettier": "^3.5.2"
+  }
+}
